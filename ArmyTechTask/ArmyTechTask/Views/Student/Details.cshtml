@@ -1,0 +1,55 @@
+﻿@model ArmyTechTask.Models.Person
+
+@{
+    ViewBag.Title = "Details";
+    var photoPath = "~/StudentImg/" + (Model.Student_img ?? "noimage.jpg");
+
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>@Model.FirstName @Model.LastName</h4>
+    <hr />
+
+</div>
+
+
+<div class="ml-auto col-auto" align="center">
+
+    <div class="row justify-content-center m-3">
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-header">
+                    <h1>@Model.FirstName @Model.LastName </h1>
+                </div>
+
+                <div class="card-body text-center">
+                    <img class="card-img-top" title="Click to View Product detail"
+                         style="cursor:pointer;height:250px;width:200px"
+                         src="~/StudentImg/@Model.Student_img" />
+                    <h4>@Html.DisplayNameFor(model => model.HireDate) : @Model.HireDate</h4>
+                    <h4>@Html.DisplayNameFor(model => model.EnrollmentDate) : @Model.EnrollmentDate</h4>
+                    <h4>@Html.DisplayNameFor(model => model.Discriminator) : @Model.Discriminator</h4>
+
+
+
+
+
+                </div>
+                <div class="card-footer text-center">
+                    <button onclick="location.href='@Url.Action("Edit", "Student" ,new { id = Model.PersonID })';return false;" class="btn btn-warning" value="Edit" style="width:auto">Edit </button>
+
+
+
+                    <button onclick="location.href='@Url.Action("Delete", "Student", new { id = Model.PersonID })';return false;" class="btn btn-danger" value="Edit" style="width:auto">Delete </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<p>
+
+    @Html.ActionLink("Back to List", "Index")
+</p>
